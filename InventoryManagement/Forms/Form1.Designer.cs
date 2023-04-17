@@ -176,7 +176,7 @@
             // 
             // deleteShelfButton
             // 
-            deleteShelfButton.Location = new Point(1009, 282);
+            deleteShelfButton.Location = new Point(1010, 313);
             deleteShelfButton.Name = "deleteShelfButton";
             deleteShelfButton.Size = new Size(113, 26);
             deleteShelfButton.TabIndex = 12;
@@ -203,7 +203,7 @@
             // 
             // shelfInfoButton
             // 
-            shelfInfoButton.Location = new Point(1009, 315);
+            shelfInfoButton.Location = new Point(1009, 281);
             shelfInfoButton.Name = "shelfInfoButton";
             shelfInfoButton.Size = new Size(113, 26);
             shelfInfoButton.TabIndex = 12;

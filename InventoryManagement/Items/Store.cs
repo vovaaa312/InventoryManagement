@@ -4,7 +4,7 @@ namespace InventoryManagement.Items
 {
     public class Store
     {
-        private ObjectLinkedList shelfs;
+        private ObjectLinkedList shelves;
         public string Name { get; set; }
         public int Count { get; set; } = 0;
 
@@ -12,10 +12,10 @@ namespace InventoryManagement.Items
         {
             get
             {
-                if (shelfs.Count == 0) return null;
-                if (index < 0 || index >= shelfs.Count) return null;
-                if (shelfs?[index] == null) return null;
-                return (Shelf)shelfs[index];
+                if (shelves.Count == 0) return null;
+                if (index < 0 || index >= shelves.Count) return null;
+                if (shelves?[index] == null) return null;
+                return (Shelf)shelves[index];
             }
         }
 
@@ -23,7 +23,7 @@ namespace InventoryManagement.Items
         {
             if (Count == 0) return true;
             bool emptyShelfs = true;
-            foreach (Shelf sf in shelfs)
+            foreach (Shelf sf in shelves)
             {
                 if (!sf.IsEmpty())
                 {
@@ -35,20 +35,21 @@ namespace InventoryManagement.Items
         }
         public Store(string name)
         {
-            this.shelfs = new ObjectLinkedList();
+            this.shelves = new ObjectLinkedList();
             this.Name = name;
         }
 
         public void AddShelf(Shelf item)
         {
 
-            shelfs.Add(item);
-            Count = shelfs.Count;
+            shelves.Add(item);
+            Count = shelves.Count;
         }
         public void DeleteShelf(int index)
         {
-            shelfs.RemoveAt(index);
-            Count = shelfs.Count;
+            
+            shelves.RemoveAt(index);
+            Count = shelves.Count;
         }
 
         public ObjectLinkedList GetAll()

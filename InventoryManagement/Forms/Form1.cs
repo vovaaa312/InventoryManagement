@@ -274,7 +274,7 @@ namespace InventoryManagement
                 int index = searchShelfComboBox.SelectedIndex;
                 Shelf shelf = store[index];
                 shelfProgressBar.Maximum = shelf.Capacity;
-                shelfProgressBar.Value = shelf.ItemsCount;
+                shelfProgressBar.Value = shelf.ShelfLoad;
                 shelfName.Text = shelf.Name;
                 shelfProgress.Text = shelf.ShelfLoad + " / " + shelf.Capacity;
             }
