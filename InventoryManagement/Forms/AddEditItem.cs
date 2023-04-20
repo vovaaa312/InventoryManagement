@@ -16,15 +16,17 @@ namespace InventoryManagement.Forms
 
         public Item NewItem = null;
 
+        private Category category;
+
         private int capacity;
-        public AddEditItem(int ShelfCapacity)
+        public AddEditItem(int ShelfCapacity, Category category)
         {
             Initialize();
             this.capacity = ShelfCapacity;
-
+            this.category = category;
         }
 
-        public AddEditItem(Item item, int ShelfCapacity) :this(ShelfCapacity)
+        public AddEditItem(Item item, int ShelfCapacity, Category category) :this(ShelfCapacity, category)
         {
             idTextBox.Text = item.Id;
             nameTextBox.Text = item.Name;
@@ -48,14 +50,15 @@ namespace InventoryManagement.Forms
             string name = nameTextBox.Text;
             int price = (int)priceNumeric.Value;
             int quantity = (int)quantityNumeric.Value;
-            if (check(id, name, price, quantity) == "OK")
+            Category category = (Category)categoryComboBox.SelectedItem;
+            if (check(id, name, price, quantity, category) == "OK")
             {
-                NewItem = new Item(id, name, (Category)categoryComboBox.SelectedItem, price, quantity, descriptionTextBox.Text);
+                NewItem = new Item(id, name, category, price, quantity, descriptionTextBox.Text);
                 Close();
             }
         }
 
-        private string check(string id, string name, int price, int quantity)
+        private string check(string id, string name, int price, int quantity, Category category)
         {
             string message = "";
             if (id == null || id == "") message += "Wrong id value! Id cannot be null\n";
@@ -63,6 +66,7 @@ namespace InventoryManagement.Forms
             if (price <= 0) message += "Wrong price value! Price cannot be less or equal 0\n";
             if (quantity <= 0) message += "Wrong quantity value! Quantity cannot be less or equal 0\n";
             if (quantity > capacity)message+= "Wrong quantity value! Quantity > capacity 0\n";
+            if (category != this.category && category != Category.None) message += category +"!="+this.category; 
             if (message != "")
             {
                 MessageBox.Show(message);

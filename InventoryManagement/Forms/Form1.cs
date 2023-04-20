@@ -44,7 +44,8 @@ namespace InventoryManagement
         {
             if (check(false))
             {
-                AddEditItem add = new(store[searchShelfComboBox.SelectedIndex].Capacity);
+                Shelf sf = store[searchShelfComboBox.SelectedIndex];
+                AddEditItem add = new(sf.Capacity, sf.shelfCategory);
                 add.ShowDialog();
                 if (add.NewItem != null)
                 {
@@ -61,7 +62,8 @@ namespace InventoryManagement
             if (check(true))
             {
                 Item item = store[searchShelfComboBox.SelectedIndex][itemsDataGridView.CurrentCell.RowIndex];
-                AddEditItem edit = new(item, store[searchShelfComboBox.SelectedIndex].Capacity);
+                Shelf sf = store[searchShelfComboBox.SelectedIndex];
+                AddEditItem edit = new(item, sf.Capacity, sf.shelfCategory);
                 edit.ShowDialog();
                 if (!edit.NewItem.Equals(item) && edit.NewItem != null)
                 {
